@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Course Search</h1>
+<%=form_tag course001s_path,method:"get" do%>
+name<%=text_field_tag :name%> 
+teacher<%=text_field_tag :teacher%>
+classroom<%=text_field_tag :classroom%>
+time<%=text_field_tag :time%>
+credit<%=text_field_tag :credit%>
+<%=submit_tag "search"%>
+<%end%>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Teacher</th>
+      <th>Classroom</th>
+      <th>Time</th>
+      <th>Credit</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course001s.each do |course001| %>
+      <tr>
+        <td><%= course001.name %></td>
+        <td><%= course001.teacher %></td>
+        <td><%= course001.classroom %></td>
+        <td><%= course001.time %></td>
+        <td><%= course001.credit %></td>
+        <td><%= link_to 'Show', course001 %></td>
+        <td><%= link_to 'Edit', edit_course001_path(course001) %></td>
+        <td><%= link_to 'Delete', course001, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Course001', new_course001_path %>
